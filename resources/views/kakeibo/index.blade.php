@@ -13,23 +13,23 @@
     
     <h2>入力</h2>
     <div class="addition">
-    <!-- 銀行追加 -->
-    <form action="{{ action('KakeiboController@bankaddition') }}" method="post" enctype="multipart/form-data">
-        @csrf
-         <label class="form-check" for="bankaddition">銀行追加</label>
-                   <input type="text" name="bank" id="bankaddition" class="form-control" placeholder="銀行名">
-                   <input type="submit" class="button" name="bankaddition" value="保存">
-                   <input type="submit" class="button" name="bankdelete"value="削除">
-    </form>
-    
-    <!-- カテゴリ追加 -->                   
-    <form action="{{ action('KakeiboController@categoryaddition') }}" method="post" enctype="multipart/form-data">
-        @csrf
-         <label class="form-check" for="categoryaddition">カテゴリ追加</label>
-                   <input type="text" name="category" id="categoryaddition" class="form-control" placeholder="カテゴリ名">
-                   <input type="submit" class="button" name="categoryaddition"value="保存">
-                   <input type="submit" class="button" name="categorydelete"value="削除">
-    </form>
+        <!-- 銀行追加 -->
+        <form action="{{ action('KakeiboController@bankaddition') }}" method="post" enctype="multipart/form-data">
+            @csrf
+             <label class="form-check" for="bankaddition">銀行追加</label>
+                       <input type="text" name="bank" id="bankaddition" class="form-control" placeholder="銀行名">
+                       <input type="submit" class="button" name="bankaddition" value="保存">
+                       <input type="submit" class="button" name="bankdelete"value="削除">
+        </form>
+        
+        <!-- カテゴリ追加 -->                   
+        <form action="{{ action('KakeiboController@categoryaddition') }}" method="post" enctype="multipart/form-data">
+            @csrf
+             <label class="form-check" for="categoryaddition">カテゴリ追加</label>
+                       <input type="text" name="category" id="categoryaddition" class="form-control" placeholder="カテゴリ名">
+                       <input type="submit" class="button" name="categoryaddition"value="保存">
+                       <input type="submit" class="button" name="categorydelete"value="削除">
+        </form>
     </div>
     <form action="{{ action('KakeiboController@create') }}" method="post" enctype="multipart/form-data">
         
@@ -88,7 +88,8 @@
                 <input type="date" name="date" id="date" class="form-control">
             </div>
             
-            
+        </section>
+         <section id="inputSections">
              
            <div class="form-group row">
                 <label class="form-check" for="category">カテゴリ</label>
@@ -116,13 +117,13 @@
             <div class="form-group row">
                 <label class="col-md-6" for="amount">金額</label>
                    <input type="text" name="amount" id="amount" class="form-control" placeholder="金額を記入">
-                  </div>
+                  
              </div>
             
             <div class="form-group row">
                 <label class="col-md-6" for="memo">メモ</label>
                    <input type="text" name="memo" id="memo" class="form-control" placeholder="品目やお店">
-                  </div>
+                 
              </div>
              
         </section>
@@ -130,92 +131,95 @@
         <div class="submitInput">
             <input type="submit" class="btn btn-primary" value="登録">
         </div>
+         </article>
       </form>
     
      <!-- 検索機能　絞り込み -->  
-    <h2>検索</h2>   
-    <form action="{{ action('KakeiboController@index') }}" method="get" enctype="multipart/form-data">
+    <div class="clear">
+        <h2>検索</h2>   
+        <form action="{{ action('KakeiboController@index') }}" method="get" enctype="multipart/form-data">
+            
         
-    
-    <article>
-        
-        <section id="inputSection">
-           
-           <div class="form-group row">
- 
-                <label class="col-md-6" for="bank">銀行</label>
-                <select class="form-control" name="bank" id="bank">
-                    <option value="">-選択してください-</option>
-                    @php
-                        $default_banks = ['三菱UFJ', '三井住友', 'みずほ', 'りそな', 'ゆうちょ'];
-                    @endphp
-                    @foreach($default_banks as $bank_name)
-                    <option @if($request->bank == $bank_name) selected @endif>
-                        {{ $bank_name }}
-                    </option>
-                    @endforeach
-                    @foreach($bankaddition as $bank)
-                    <option @if($request->bank == $bank->bank) selected @endif>
-                        {{ $bank->bank }}
-                    </option>
-                    @endforeach
-                </select>
-    　　　 </div>
-                            
-           
-           <div class="from-group row">
-               <label class="col-md-6" for="total-income">収支</label>
+        <article>
+            
+            <section id="inputSection">
                
-               <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="total" value="収入" id="total-income" @if($request->total == "収入") checked @endif>収入
-                    </label>
+               <div class="form-group row">
+     
+                    <label class="col-md-6" for="bank">銀行</label>
+                    <select class="form-control" name="bank" id="bank">
+                        <option value="">-選択してください-</option>
+                        @php
+                            $default_banks = ['三菱UFJ', '三井住友', 'みずほ', 'りそな', 'ゆうちょ'];
+                        @endphp
+                        @foreach($default_banks as $bank_name)
+                        <option @if($request->bank == $bank_name) selected @endif>
+                            {{ $bank_name }}
+                        </option>
+                        @endforeach
+                        @foreach($bankaddition as $bank)
+                        <option @if($request->bank == $bank->bank) selected @endif>
+                            {{ $bank->bank }}
+                        </option>
+                        @endforeach
+                    </select>
+        　　　 </div>
+                                
+               
+               <div class="from-group row">
+                   <label class="col-md-6" for="total-income">収支</label>
+                   
+                   <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="total" value="収入" id="total-income" @if($request->total == "収入") checked @endif>収入
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="total" value="支出" @if($request->total == "支出") checked @endif>支出
+                        </label>
+                     </div>
+               </div>
+                    
+                <div class="form-group row">
+                    <label class="col-md-6" for="date">日付</label>
+                    <input type="date" name="payDateFrom" id="date" class="form-control" value="{{$request->payDateFrom}}">
+                    ~
+                    <input type="date" name="payDateTo" id="date" class="form-control" value="{{$request ->payDateTo}}">
                 </div>
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="total" value="支出" @if($request->total == "支出") checked @endif>支出
-                    </label>
-                 </div>
-           </div>
                 
-            <div class="form-group row">
-                <label class="col-md-6" for="date">日付</label>
-                <input type="date" name="payDateFrom" id="date" class="form-control" value="{{$request->payDateFrom}}">
-                ~
-                <input type="date" name="payDateTo" id="date" class="form-control" value="{{$request ->payDateTo}}">
+                
+                 
+               <div class="form-group row">
+                    <label class="col-md-6" for="category">カテゴリ</label>
+                     <select name="category" id="category" class="form-control">   
+                     <option value="">-選択してください-</option>
+                        @php
+                            $default_categories = ['給与', '食費', '日用品', '交通費', '衣服','携帯代','貯金'];
+                        @endphp
+                        @foreach($default_categories as $category_name)
+                        
+                        <option @if($request->category == $category_name) selected @endif>
+                            {{ $category_name }}
+                        </option>
+                        @endforeach
+                        
+                        @foreach($categoryaddition as $category)
+                        <option @if($request->category == $category->category) selected @endif>
+                            {{ $category->category }}
+                        </option>
+                        @endforeach
+                  
+                    </select>
+                </div>
+                
+            </section>
+            
+            <div class="submit">
+                <input type="submit" class="btn btn-primary" value="検索">
             </div>
-            
-            
-             
-           <div class="form-group row">
-                <label class="col-md-6" for="category">カテゴリ</label>
-                 <select name="category" id="category" class="form-control">   
-                 <option value="">-選択してください-</option>
-                    @php
-                        $default_categories = ['給与', '食費', '日用品', '交通費', '衣服','携帯代','貯金'];
-                    @endphp
-                    @foreach($default_categories as $category_name)
-                    
-                    <option @if($request->category == $category_name) selected @endif>
-                        {{ $category_name }}
-                    </option>
-                    @endforeach
-                    
-                    @foreach($categoryaddition as $category)
-                    <option @if($request->category == $category->category) selected @endif>
-                        {{ $category->category }}
-                    </option>
-                    @endforeach
-              
-                </select>
-            </div>
-            
-        </section>
-        
-        <div class="submit">
-            <input type="submit" class="btn btn-primary" value="検索">
-        </div>
-      </form>
+          </form>
+      </div>
  
         <h2>入出金一覧</h2>
         <section id="list">

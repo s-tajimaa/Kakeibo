@@ -16,11 +16,12 @@ h1 {
 }
 
 /* 入力欄のレイアウト */
-#inputSection {
+#inputSection,#inputSections {
     display: flex;
      justify-content: flex-start;
 }
-#inputSection div {
+
+#inputSection div, #inputSections div{
     flex-grow: 1;
    margin: 0 10px 10px 0;
 }
@@ -48,6 +49,10 @@ h2 {
     background-color: #EEE;
     font-family:monospace;
     font-size: 30px;
+}
+
+.clear {
+    clear: both;
 }
 
 /*    padding: 5px 50px;
