@@ -15,7 +15,7 @@
 
         <!-- Scripts -->
          {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="/js/app.js" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -23,9 +23,9 @@
 
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ asset('css/kakeibo.css') }}" rel="stylesheet">
+        <link href="/css/kakeibo.css" rel="stylesheet">
     </head>
     <body>
         <div id="app">
