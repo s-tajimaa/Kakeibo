@@ -13,6 +13,6 @@ class Kakeibo extends Model
         'total' => 'required',
         'date' => 'required',
         'category' => 'required',
-        'amount' => 'required',
+        'amount' => 'required|numeric',
     );
 }
